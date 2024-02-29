@@ -3,15 +3,6 @@
 
 # musePHI
 
-## Disclaimer
-
-It is the responsibility of the user to accurately identify and replace
-values that need to be de-identified from the XML file. Furthermore,
-users must validate the results to ensure no personal health information
-(PHI) is inadvertently disclosed. The developers of `musePHI` assume no
-liability for the misuse of this software or the inadvertent sharing of
-PHI.
-
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml)
@@ -22,6 +13,15 @@ MUSE ECG XML files. It enables users to replace sensitive patient
 information within XML files with placeholders, maintaining the overall
 structure of the files. This approach helps in ensuring patient privacy
 while allowing the data to be used for research or analysis purposes.
+
+## Disclaimer
+
+It is the responsibility of the user to accurately identify and replace
+values that need to be de-identified from the XML file. Furthermore,
+users must validate the results to ensure no personal health information
+(PHI) is inadvertently disclosed. The developers of `musePHI` assume no
+liability for the misuse of this software or the inadvertent sharing of
+PHI.
 
 ## Installation
 
