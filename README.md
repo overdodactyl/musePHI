@@ -42,6 +42,10 @@ replace <- list(
 )
 ```
 
+For each element in the list, the name should be the path to an XML node
+(relative to `RestingECG`). The value is what the node will be replaced
+with.
+
 Specify the path to your existing XML file and the path for the new
 de-identified XML file. Then, call muse_deidentify:
 
@@ -54,7 +58,7 @@ muse_deidentify(file, output_file, replace)
 **NOTE:** It’s recommended to save the de-identified ECG data to a new
 file to preserve the original data.
 
-# Parrallelization
+# Parallelization
 
 For users working with a large number of XML files, parallelization can
 significantly speed up the de-identification process. We recommend using
