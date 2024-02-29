@@ -85,6 +85,7 @@
 <span>  <span class="st">"TestDemographics/AcquisitionDate"</span> <span class="op">=</span> <span class="st">"01-01-0001"</span>,</span>
 <span>  <span class="st">"TestDemographics/AcquisitionTime"</span> <span class="op">=</span> <span class="st">"00:00:00"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<p>For each element in the list, the name should be the path to an XML node (relative to <code>RestingECG</code>). The value is what the node will be replaced with.</p>
 <p>Specify the path to your existing XML file and the path for the new de-identified XML file. Then, call muse_deidentify:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/muse_example.html">muse_example</a></span><span class="op">(</span><span class="st">"muse/muse_ecg1.xml"</span><span class="op">)</span></span>
@@ -94,7 +95,7 @@
 </div>
 </div>
 <div class="section level1">
-<h1 id="parrallelization">Parrallelization<a class="anchor" aria-label="anchor" href="#parrallelization"></a>
+<h1 id="parallelization">Parallelization<a class="anchor" aria-label="anchor" href="#parallelization"></a>
 </h1>
 <p>For users working with a large number of XML files, parallelization can significantly speed up the de-identification process. We recommend using the <a href="https://furrr.futureverse.org" class="external-link">furrr</a> package to efficiently parallelize your workload.</p>
 </div>
