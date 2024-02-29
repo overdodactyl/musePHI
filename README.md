@@ -56,7 +56,7 @@ file to preserve the original data.
 
 For users working with a large number of XML files, parallelization can
 significantly speed up the de-identification process. We recommend using
-the \[furrr\]<https://furrr.futureverse.org>) package to efficiently
+the [furrr](https://furrr.futureverse.org) package to efficiently
 parallelize your workload.
 
 # Disclaimer
