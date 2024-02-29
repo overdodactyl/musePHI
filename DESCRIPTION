@@ -15,3 +15,5 @@ LazyData: true
 Imports: 
     xml2
 RoxygenNote: 7.3.1
+URL: https://overdodactyl.github.io/musePHI, https://github.com/overdodactyl/musePHI
+BugReports: https://github.com/overdodactyl/musePHI/issues
