@@ -4,6 +4,8 @@
 # musePHI
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `musePHI` is a package designed to assist in the de-identification of
