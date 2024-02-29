@@ -1,6 +1,6 @@
 Package: musePHI
 Type: Package
-Title: Removes PHI from MUSE XML files
+Title: Remove PHI from MUSE XML files
 Version: 0.2.0
 Authors@R: 
     c(person(given = "Pat",
@@ -8,7 +8,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "Johnson.Patrick3@mayo.edu",
            comment = c(ORCID = "0000-0001-8365-1375")))
-Description: Removes elements from MUSE XML files
+Description: Removes elements from MUSE XML files.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
