@@ -15,6 +15,10 @@ knitr::opts_chunk$set(
 
 # musePHI
 
+## Disclaimer
+
+It is the responsibility of the user to accurately identify and replace values that need to be de-identified from the XML file. Furthermore, users must validate the results to ensure no personal health information (PHI) is inadvertently disclosed. The developers of `musePHI` assume no liability for the misuse of this software or the inadvertent sharing of PHI.
+
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/overdodactyl/musePHI/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
@@ -62,10 +66,8 @@ muse_deidentify(file, output_file, replace)
 
 **NOTE:** It's recommended to save the de-identified ECG data to a new file to preserve the original data.
 
-# Parallelization 
+## Parallelization 
 
 For users working with a large number of XML files, parallelization can significantly speed up the de-identification process. We recommend using the [furrr](https://furrr.futureverse.org) package to efficiently parallelize your workload.
 
-# Disclaimer
 
-It is the responsibility of the user to accurately identify and replace values that need to be de-identified from the XML file. Furthermore, users must validate the results to ensure no personal health information (PHI) is inadvertently disclosed. The developers of `musePHI` assume no liability for the misuse of this software or the inadvertent sharing of PHI.
