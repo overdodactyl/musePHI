@@ -129,7 +129,7 @@ First, create 10000 XML files in a temporary directory:
 dir <- fs::path_temp("xmls")
 fs::dir_create(dir)
 
-for (i in 1:100) {
+for (i in 1:10000) {
   fs::file_copy(
     "inst/extdata/muse/muse_ecg1.xml",
     fs::file_temp(tmp_dir = dir, ext = ".xml")

@@ -113,11 +113,11 @@ It could also be done via the `diff` linux tool:
 cmd <- paste("diff -u", file, output_file)
 res <- system(cmd, intern = TRUE)
 #> Warning in system(cmd, intern = TRUE): running command 'diff -u
-#> /apps/scratch/RtmpPXPjzJ/temp_libpath2a85bc7140f2a3/musePHI/extdata/muse/muse_ecg1.xml
-#> /apps/scratch/Rtmpqkc0f0/file2a954842343b58.xml' had status 1
+#> /apps/scratch/RtmpPXPjzJ/temp_libpath2a85bc5f742b1d/musePHI/extdata/muse/muse_ecg1.xml
+#> /apps/scratch/RtmpkNrgdZ/file2afdec794abf0e.xml' had status 1
 cat(res, sep = "\n")
-#> --- /apps/scratch/RtmpPXPjzJ/temp_libpath2a85bc7140f2a3/musePHI/extdata/muse/muse_ecg1.xml   2024-06-23 17:09:21.546756534 -0500
-#> +++ /apps/scratch/Rtmpqkc0f0/file2a954842343b58.xml  2024-06-23 17:09:29.090755967 -0500
+#> --- /apps/scratch/RtmpPXPjzJ/temp_libpath2a85bc5f742b1d/musePHI/extdata/muse/muse_ecg1.xml   2024-06-23 17:50:06.707066572 -0500
+#> +++ /apps/scratch/RtmpkNrgdZ/file2afdec794abf0e.xml  2024-06-23 17:50:13.996066024 -0500
 #> @@ -5,11 +5,11 @@
 #>        <MuseVersion>9.0.9.18167</MuseVersion>
 #>     </MuseInfo>
@@ -192,7 +192,7 @@ First, create 10000 XML files in a temporary directory:
 dir <- fs::path_temp("xmls")
 fs::dir_create(dir)
 
-for (i in 1:100) {
+for (i in 1:10000) {
   fs::file_copy(
     "inst/extdata/muse/muse_ecg1.xml",
     fs::file_temp(tmp_dir = dir, ext = ".xml")
@@ -221,7 +221,7 @@ for (i in seq_along(xml_files)) {
   muse_deidentify(xml_files[i], deidentified_xmls[i], replace)
 }
 toc()
-#> 0.464 sec elapsed
+#> 44.404 sec elapsed
 ```
 
 Run in parallel:
@@ -236,7 +236,7 @@ plan(multisession, workers = 10)
 tic()
 future_walk2(xml_files, deidentified_xmls, muse_deidentify, replace = replace)
 toc()
-#> 3.32 sec elapsed
+#> 9.559 sec elapsed
 ```
 
 # Summarizing Diagnosis Data
@@ -247,20 +247,20 @@ diagnoses <- future_map_dfr(deidentified_xmls, muse_diagnoses)
 diagnoses |> 
   dplyr::count(value, sort = TRUE)
 #> # A tibble: 14 × 2
-#>    value                                                  n
-#>    <chr>                                              <int>
-#>  1 ENDSLINE                                            1100
-#>  2 USERINSERT                                           200
-#>  3 When compared with ECG of                            200
-#>  4 XX-XXX-XXXX XX:XX,                                   200
-#>  5 , age undetermined                                   100
-#>  6 Abnormal ECG                                         100
-#>  7 Confirmed by XXX (XX) on XX/XX/XXXX XX:XX:XX XM      100
-#>  8 Lateral infarct                                      100
-#>  9 Left axis deviation                                  100
-#> 10 No significant change.                               100
-#> 11 Non-specific intra-ventricular conduction block      100
-#> 12 Previous ECG has undetermined rhythm, needs review   100
-#> 13 Ventricular-paced rhythm                             100
-#> 14 Wide QRS rhythm                                      100
+#>    value                                                   n
+#>    <chr>                                               <int>
+#>  1 ENDSLINE                                           110000
+#>  2 USERINSERT                                          20000
+#>  3 When compared with ECG of                           20000
+#>  4 XX-XXX-XXXX XX:XX,                                  20000
+#>  5 , age undetermined                                  10000
+#>  6 Abnormal ECG                                        10000
+#>  7 Confirmed by XXX (XX) on XX/XX/XXXX XX:XX:XX XM     10000
+#>  8 Lateral infarct                                     10000
+#>  9 Left axis deviation                                 10000
+#> 10 No significant change.                              10000
+#> 11 Non-specific intra-ventricular conduction block     10000
+#> 12 Previous ECG has undetermined rhythm, needs review  10000
+#> 13 Ventricular-paced rhythm                            10000
+#> 14 Wide QRS rhythm                                     10000
 ```
