@@ -4,40 +4,68 @@
 \alias{muse_deidentify}
 \title{De-identify Muse XML Files}
 \usage{
-muse_deidentify(file, output_file, replace)
+muse_deidentify(file, output_file, replace = list())
 }
 \arguments{
-\item{file}{A string specifying the path to the input XML file to be de-identified.}
+\item{file}{Path to the input XML file to be de-identified.}
 
-\item{output_file}{A string specifying the path where the de-identified XML file will be saved.}
+\item{output_file}{Path where the de-identified XML file will be saved.}
 
-\item{replace}{A named list where each name is a path to an XML node (relative to the `RestingECG` root) and its value is the replacement text.
-For example, `list("PatientDemographics/PatientLastName" = "LastName")` would replace the text of the `PatientLastName` element within `PatientDemographics`.}
+\item{replace}{A named list where each name is an XPath to an XML node and
+its value is a list of regex patterns and replacements. For example,
+`list("//PatientDemographics/PatientLastName" = list(".*" = "LastName"))`
+replaces the text of the `PatientLastName` element within `PatientDemographics`.#'}
 }
 \value{
-Invisibly returns the path to the output file containing the de-identified XML document. The function primarily operates through side effects (reading an input file, modifying its content, and writing the result to a new file).
+Invisibly returns the path to the output file containing the
+de-identified XML document. The function primarily operates through side
+effects (reading an input file, modifying its content, and writing the
+result to a new file).
 }
 \description{
-This function de-identifies XML files containing patient data from Muse ECG systems by replacing specified elements with anonymized values.
-The function targets specific nodes within the `RestingECG` element of the XML document based on a provided list of elements to be replaced.
+This function de-identifies Muse ECG XML files by replacing specified
+elements with anonymized values using regex patterns.
 }
 \note{
-Make sure the paths provided in `replace` accurately reflect the structure of your XML documents.
+Ensure the paths in `replace` accurately reflect your XML structure.
 }
 \examples{
 # De-identify a sample Muse ECG XML file
-replace <- list(
-  "PatientDemographics/PatientLastName" = "LastName",
-  "PatientDemographics/PatientFirstName" = "FirstName",
-  "PatientDemographics/PatientID" = "AnonymousID",
-  "TestDemographics/AcquisitionDate" = "01-01-0001",
-  "TestDemographics/AcquisitionTime" = "00:00:00"
+
+
+# For diagnosis statements, we will remove only specific text (like dates)
+# rather than the full nodes
+
+# Create a string of valid month abbreviations
+months <- paste(toupper(month.abb), collapse = "|")
+
+dx_replace <- setNames(
+  list(
+    "XX-XXX-XXXX XX:XX",  # Replacement for date-time format
+    "XX-XXX-XXXX",        # Replacement for date format
+    "Confirmed by XXX (XX) on XX/XX/XXXX XX:XX:XX XM" # Replacement for confirmation format
+  ),
+  c(
+    paste0("\\\\d{2}-(", months, ")-\\\\d{4} \\\\d{2}:\\\\d{2}"),
+    paste0("\\\\d{2}-(", months, ")-\\\\d{4}"),
+    "Confirmed by [A-Za-z]+, [A-Za-z]+ \\\\(\\\\d+\\\\) on \\\\d{1,2}/\\\\d{1,2}/\\\\d{4} \\\\d{1,2}:\\\\d{2}:\\\\d{2} [APM]+"
+  )
 )
+
+replace <- list(
+  "/RestingECG/PatientDemographics/PatientLastName" = list(".*" = "LastName"),
+  "/RestingECG/PatientDemographics/PatientFirstName" = list(".*" = "FirstName"),
+  "/RestingECG/PatientDemographics/PatientID" = list(".*" = "PatientID"),
+  "/RestingECG/PatientDemographics/DateofBirth" = list(".*" = "XXXX"),
+  "/RestingECG/Diagnosis/DiagnosisStatement/StmtText" = dx_replace,
+  "/RestingECG/OriginalDiagnosis/DiagnosisStatement/StmtText" = dx_replace
+ )
 file <- muse_example("muse/muse_ecg1.xml")
 output_file <- tempfile(fileext = ".xml")
 muse_deidentify(file, output_file, replace)
 
 }
 \seealso{
-\code{\link[xml2]{read_xml}}, \code{\link[xml2]{write_xml}} for the underlying XML manipulation functions used.
+\code{\link[xml2]{read_xml}}, \code{\link[xml2]{write_xml}} for the
+underlying XML manipulation functions used.
 }

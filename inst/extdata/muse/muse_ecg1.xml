@@ -76,34 +76,65 @@
       <ECGSampleExponent>0</ECGSampleExponent>
       <QTcFrederica>364</QTcFrederica>
    </OriginalRestingECGMeasurements>
-   <Diagnosis>
+    <Diagnosis>
       <Modality>RESTING</Modality>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(22)</StmtText>
+         <StmtFlag>USERINSERT</StmtFlag>
+         <StmtText>Ventricular-paced rhythm</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtText>When compared with ECG of</StmtText>
       </DiagnosisStatement>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(1684)</StmtText>
+         <StmtText>10-MAY-2021 14:14,</StmtText>
       </DiagnosisStatement>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(1300)</StmtText>
+         <StmtFlag>USERINSERT</StmtFlag>
+         <StmtText>No significant change.</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtFlag>ENDSLINE</StmtFlag>
+         <StmtText>Confirmed by Doe, John (123456) on 05/10/2021 1:15:09 PM</StmtText>
       </DiagnosisStatement>
    </Diagnosis>
    <OriginalDiagnosis>
       <Modality>RESTING</Modality>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(22)</StmtText>
+         <StmtText>Wide QRS rhythm</StmtText>
       </DiagnosisStatement>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(1684)</StmtText>
+         <StmtText>Left axis deviation</StmtText>
       </DiagnosisStatement>
       <DiagnosisStatement>
          <StmtFlag>ENDSLINE</StmtFlag>
-         <StmtText>Statement Text(1300)</StmtText>
+         <StmtText>Non-specific intra-ventricular conduction block</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtText>Lateral infarct</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtFlag>ENDSLINE</StmtFlag>
+         <StmtText>, age undetermined</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtFlag>ENDSLINE</StmtFlag>
+         <StmtText>Abnormal ECG</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtText>When compared with ECG of</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtFlag>ENDSLINE</StmtFlag>
+         <StmtText>10-MAY-2021 18:34,</StmtText>
+      </DiagnosisStatement>
+      <DiagnosisStatement>
+         <StmtFlag>ENDSLINE</StmtFlag>
+         <StmtText>Previous ECG has undetermined rhythm, needs review</StmtText>
       </DiagnosisStatement>
    </OriginalDiagnosis>
    <MeasurementMatrix>
