@@ -16,10 +16,16 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/news/index.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/muse_deidentify.html</loc>
+  </url>
+  <url>
+    <loc>/reference/muse_diagnoses.html</loc>
   </url>
   <url>
     <loc>/reference/muse_example.html</loc>
